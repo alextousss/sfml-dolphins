@@ -1,7 +1,7 @@
 CC=g++
 CFLAGS= -Wall -ansi -pedantic -c  -std=c++11 -g3 -O0
 LDFLAGS= -lsfml-graphics -lsfml-window -lsfml-system
-EXEC=snake
+EXEC=dolphins
 SRCDIR=src
 ODIR=obj
 INCLUDEDIR=include
