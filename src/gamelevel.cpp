@@ -1,18 +1,17 @@
 #include "gamelevel.hpp"
 
-GameLevel::GameLevel()
+GameLevel::GameLevel( )
 {
-  sf::RenderWindow window(sf::VideoMode(1000, 1000), "SFML dolphins");
-  window.setVerticalSyncEnabled(true);
+ 
 }
 
-void GameLevel::update(time_t time_elapsed)
+void GameLevel::draw( sf::RenderTarget& target, sf::RenderStates states ) const
 {
-
-  updateScreen();
+  target.draw( dolphin );
 }
 
-void GameLevel::updateScreen()
+void GameLevel::update( float linear_input, float angular_input )
 {
-  
+	time_t useless_time;
+	dolphin.update( useless_time, linear_input, angular_input );  	
 }
