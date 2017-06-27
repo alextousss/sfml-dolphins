@@ -11,11 +11,13 @@ class Fish : public sf::Drawable
 {
 public:
   Fish(const char * texture_loc);
-  virtual void update(time_t time_elapsed, float linear_input, float angular_input);
-
+  void update( float linear_input, float angular_input);
+	sf::Vector2f getPosition() { return position ; }
+	float getAngle() { return angle; } 
 private:
   virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const;
   sf::Texture texture;
+	sf::Sprite sprite;
 
   sf::Vector2f position;
   float angle;

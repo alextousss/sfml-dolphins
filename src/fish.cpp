@@ -15,22 +15,21 @@ Fish::Fish( const char * texture_loc )
 
   position = sf::Vector2f(250,250);
   angle = 0;
+	sprite.setTexture( texture );
 }
 
-void Fish::update(time_t time_elapsed, float linear_input, float angular_input)
+void Fish::update(float linear_input, float angular_input)
 { 
+	(angular_input > 3)? angular_input = 3 : angular_input;
+	(angular_input < -3)? angular_input = -3 : angular_input;
   angle += angular_input;
 	
   position.x += cos(angle / CONVERSION_RATIO) * linear_input;
   position.y += sin(angle / CONVERSION_RATIO) * linear_input;
 
-}
 
-
-void Fish::draw(sf::RenderTarget& target, sf::RenderStates states) const
-{
+	
 	sf::Time current_time = time_at_born.getElapsedTime();
-  sf::Sprite sprite;
 
 	float oscillation_amplitude = 7;
 	float oscillation_speed = 0.025;
@@ -40,7 +39,12 @@ void Fish::draw(sf::RenderTarget& target, sf::RenderStates states) const
   sprite.setPosition( position );
 
 	int sprite_angle = (angle - 200) + sin( current_time.asMilliseconds() * oscillation_speed) * oscillation_amplitude;
-	sprite.setRotation( sprite_angle );
 
+	sprite.setRotation( sprite_angle ); 
+}
+
+
+void Fish::draw(sf::RenderTarget& target, sf::RenderStates states) const
+{
   target.draw(sprite);
 }
